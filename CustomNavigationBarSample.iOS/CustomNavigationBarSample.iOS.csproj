@@ -90,8 +90,7 @@
   <ItemGroup>
     <Compile Include="Main.cs" />
     <Compile Include="AppDelegate.cs" />
-    <Compile Include="Renderers\CustomNavigationRenderer.cs" />
-    <Compile Include="Renderers\CustomTitleContentPageRenderer.cs" />
+    <Compile Include="Renderers\CustomPageRenderer.cs" />
     <None Include="Entitlements.plist" />
     <None Include="Info.plist" />
     <Compile Include="Properties\AssemblyInfo.cs" />
