@@ -14,3 +14,18 @@ Navigation Bar Customization in Xamarin Forms
 - Image title
 - Bar Background
 - Bar Shadow
+
+
+
+### Future
+
+- Support Badges
+- Kerning
+- Back Button Customization
+- Toolbar Items Customization
+- Buttons/Picker as title
+- Rotated Title
+- Animations
+- Traslucent Bar
+- Collapsable Bar
+- Bar Templates
