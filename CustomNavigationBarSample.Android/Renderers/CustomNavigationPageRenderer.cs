@@ -581,12 +581,11 @@ namespace CustomNavigationBarSample.Droid.Renderers
             {
                 if (customFont != null)
                 {
-                    textView.SetTypeface(customFont.ToTypeface(), ToTypefaceStyle(customFont.FontAttributes));
+                    textView.Typeface =customFont.ToTypeface();
 
                     float tValue = customFont.ToScaledPixel();
-                    textView.TextSize = TypedValue.ApplyDimension(ComplexUnitType.Sp, tValue, textView.Resources.DisplayMetrics);
-
-                }
+                    textView.SetTextSize(ComplexUnitType.Sp, tValue);
+            }
                 else
                 {
                     textView.Typeface = originalFont;
