@@ -14,6 +14,9 @@ Navigation Bar Customization in Xamarin Forms
 - Image title
 - Bar Background
 - Bar Shadow
+- Bar Opacity
+- Title Margin
+- Title Padding
 
 
 
