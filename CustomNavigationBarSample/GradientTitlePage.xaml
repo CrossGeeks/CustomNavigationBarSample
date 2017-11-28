@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="CustomNavigationBarSample.GradientTitlePage">
+    <ContentPage.Content>
+        <StackLayout>
+            <Label Text="Title Color" TextColor="Gray" FontAttributes="Bold"/>
+            <Picker x:Name="titleColorPicker" ItemDisplayBinding="{Binding Item1}" Title="Select title color"  SelectedIndexChanged="TitleColorPicker_SelectedIndexChanged">
+            </Picker>
+            <Label Text="Gradient Start Color" TextColor="Gray" FontAttributes="Bold"/>
+            <Picker ItemDisplayBinding="{Binding Item1}" x:Name="startColorPicker" Title="Select start color"  SelectedIndexChanged="ColorPicker_SelectedIndexChanged">
+                
+            </Picker>
+            <Label Text="Gradient End Color" TextColor="Gray" FontAttributes="Bold"/>
+            <Picker x:Name="endColorPicker" ItemDisplayBinding="{Binding Item1}" Title="Select end color"  SelectedIndexChanged="ColorPicker_SelectedIndexChanged">
+            </Picker>
+            <Label Text="Gradient Direction" TextColor="Gray" FontAttributes="Bold"/>
+            <Picker x:Name="gradientDirectionPicker" Title="Select gradient direction" SelectedIndex="0" SelectedIndexChanged="GradientDirectionPicker_SelectedIndexChanged">
+                <Picker.Items>
+                    <x:String>Top to Bottom</x:String>
+                    <x:String>Right to Left</x:String>
+                    <x:String>Left to Right</x:String>
+                    <x:String>Bottom to Top</x:String>
+                </Picker.Items>
+            </Picker>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

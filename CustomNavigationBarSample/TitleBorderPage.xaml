@@ -1,0 +1,42 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="CustomNavigationBarSample.TitleBorderPage">
+    <ContentPage.Content>
+        <StackLayout >
+            <StackLayout Orientation="Horizontal" >
+                <Label Text="Title"/>
+                <Entry x:Name="titleEntry" HorizontalOptions="FillAndExpand" TextChanged="TitleEntry_TextChanged"/>
+            </StackLayout>
+            <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand">
+                <Label Text="Border Radius"/>
+                <Slider x:Name="borderRadiuSlider" HeightRequest="40" HorizontalOptions="FillAndExpand"  Maximum="25" Minimum="0" ValueChanged="BorderRadiuSlider_ValueChanged" />
+
+            </StackLayout>
+            <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand">
+                <Label Text="Border Width"/>
+                <Slider x:Name="borderWidthSlider" HeightRequest="40" HorizontalOptions="FillAndExpand" Maximum="5" Minimum="0" ValueChanged="BorderWidthSlider_ValueChanged"/>
+
+            </StackLayout>
+            <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand">
+                <Label Text="Title Padding"/>
+                <Slider x:Name="titlePaddingSlider" HeightRequest="40" HorizontalOptions="FillAndExpand" Maximum="5" Minimum="0" ValueChanged="TitlePaddingSlider_ValueChanged"/>
+
+            </StackLayout>
+            <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand">
+                <Label Text="Title Margin"/>
+                <Slider x:Name="titleMarginSlider" HeightRequest="40" HorizontalOptions="FillAndExpand" Maximum="5" Minimum="0" ValueChanged="TitleMarginSlider_ValueChanged"/>
+
+            </StackLayout>
+        
+            <Label Text="Fill Color"/>
+            <Picker x:Name="titleFillColorPicker" ItemDisplayBinding="{Binding Item1}" Title="Select fill color"  SelectedIndexChanged="TitleFillColorPicker_SelectedIndexChanged">
+            </Picker>
+            
+            <Label Text="Border Color"/>
+            <Picker x:Name="titleBorderColorPicker" ItemDisplayBinding="{Binding Item1}" Title="Select border color" SelectedIndexChanged="TitleBorderColorPicker_SelectedIndexChanged"  >
+            </Picker>
+            
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

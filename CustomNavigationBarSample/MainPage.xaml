@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<local:CustomPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:CustomNavigationBarSample"
+             x:Class="CustomNavigationBarSample.MainPage" Title="NavigationBar" Subtitle="Playground">
+    <StackLayout>
+        <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand">
+            <Label Text="Show Shadow"/>
+            <Switch  Toggled="Switch_Toggled"></Switch>
+        </StackLayout>
+       
+        <ListView  x:Name="listView" ItemSelected="ItemSelected">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <TextCell Text="{Binding .}" TextColor="Gray" />
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </StackLayout>
+    
+</local:CustomPage>

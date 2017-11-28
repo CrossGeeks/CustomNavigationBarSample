@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<local:CustomPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="CustomNavigationBarSample.TitlePositionPage" Title="My Title"
+             xmlns:local="clr-namespace:CustomNavigationBarSample">
+    <StackLayout>
+        <StackLayout Orientation="Horizontal">
+            <Label Text="Show Subtitle" TextColor="Gray" FontAttributes="Bold"/>
+            <Switch x:Name="showSubtitle"  Toggled="ShowSubtitle_Toggled" />
+        </StackLayout>
+      
+        <Label Text="Position" TextColor="Gray" FontAttributes="Bold"/>
+        <Picker x:Name="positionPicker" Title="Select title position" SelectedIndex="0" SelectedIndexChanged="PositionPickerSelectedIndexChanged">
+            <Picker.Items>
+                <x:String>Start</x:String>
+                <x:String>Center</x:String>
+                <x:String>End</x:String>
+            </Picker.Items>
+        </Picker>
+        <Label Text="Font Size" TextColor="Gray" FontAttributes="Bold"/>
+        <Picker x:Name="fontSizePicker" Title="Select title size" SelectedIndex="2" SelectedIndexChanged="FontSizePickerSelectedIndexChanged">
+            <Picker.Items>
+                <x:String>Micro</x:String>
+                <x:String>Small</x:String>
+                <x:String>Medium</x:String>
+                <x:String>Large</x:String>
+            </Picker.Items>
+        </Picker>
+    </StackLayout>
+   
+</local:CustomPage>
