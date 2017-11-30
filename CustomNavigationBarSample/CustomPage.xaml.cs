@@ -13,11 +13,8 @@ namespace CustomNavigationBarSample
     public partial class CustomPage : ContentPage
     {
 
-        public static readonly BindableProperty FormattedTitleProperty = BindableProperty.Create(
-              nameof(FormattedTitle),
-              typeof(FormattedString),
-              typeof(CustomPage),
-              null);
+        public static readonly BindableProperty FormattedTitleProperty = BindableProperty.Create(nameof(FormattedTitle),typeof(FormattedString),typeof(CustomPage),null);
+              
         public FormattedString FormattedTitle
         {
             get { return (FormattedString)GetValue(FormattedTitleProperty); }
@@ -27,11 +24,8 @@ namespace CustomNavigationBarSample
             }
         }
 
-        public static readonly BindableProperty FormattedSubtitleProperty = BindableProperty.Create(
-           nameof(FormattedSubtitle),
-           typeof(FormattedString),
-           typeof(CustomPage),
-           null);
+        public static readonly BindableProperty FormattedSubtitleProperty = BindableProperty.Create(nameof(FormattedSubtitle),typeof(FormattedString), typeof(CustomPage), null);
+           
         public FormattedString FormattedSubtitle
         {
             get { return (FormattedString)GetValue(FormattedSubtitleProperty); }
@@ -41,11 +35,9 @@ namespace CustomNavigationBarSample
             }
         }
 
-        public static readonly BindableProperty SubtitleProperty = BindableProperty.Create(
-        nameof(Subtitle),
-        typeof(string),
-        typeof(CustomPage),
-        null);
+        public static readonly BindableProperty SubtitleProperty = BindableProperty.Create(nameof(Subtitle),typeof(string),typeof(CustomPage),null);
+        
+        
         public string Subtitle
         {
             get { return (string)GetValue(SubtitleProperty); }
@@ -59,8 +51,6 @@ namespace CustomNavigationBarSample
         public CustomPage()
         {
             InitializeComponent();
-
-
         }
     }
 }
