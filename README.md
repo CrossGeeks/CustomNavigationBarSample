@@ -24,6 +24,7 @@ Navigation Bar Customization in Xamarin Forms
 
 ### Future
 
+- UWP and other platforms support
 - Support Badges
 - Kerning
 - Back Button Customization
