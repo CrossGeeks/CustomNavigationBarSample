@@ -52,6 +52,15 @@ bool hasShadow = CustomNavigationPage.GetHasShadow(this);
 
 //Sets the title text font to Micro
 CustomNavigationPage.SetTitleFont(this, Font.SystemFontOfSize(NamedSize.Micro));
+
+//Sets the title color
+CustomNavigationPage.SetTitleColor(this,Color.Navy);
+
+//Sets bar background
+CustomNavigationPage.SetBarBackground(this, Device.RuntimePlatform == Device.iOS ? "monkeybackground.jpg": "monkeybackground");
+
+//Sets bar background opacity
+CustomNavigationPage.SetBarBackgroundOpacity(this,0.6f);
 ```
 
 ### Future
