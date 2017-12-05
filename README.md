@@ -35,7 +35,7 @@ Navigation Bar Customization in Xamarin Forms
 <img width="300" height:"700" src="https://github.com/CrossGeeks/CustomNavigationBarSample/blob/master/gifs/ios/title_customization_.iOS.gif" title="iOS"/>
 </p>
 
-### Usage
+### Usage on a Xamarin Forms page
 
 ```cs
 //Sets the title position to end
