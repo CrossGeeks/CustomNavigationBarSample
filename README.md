@@ -35,6 +35,25 @@ Navigation Bar Customization in Xamarin Forms
 <img width="300" height:"700" src="https://github.com/CrossGeeks/CustomNavigationBarSample/blob/master/gifs/ios/title_customization_.iOS.gif" title="iOS"/>
 </p>
 
+### Usage
+
+```cs
+//Sets the title position to end
+
+CustomNavigationPage.SetTitlePosition(this, CustomNavigationPage.TitleAlignment.End);
+
+//Sets shadow for bar bottom
+
+CustomNavigationPage.SetHasShadow(this,true);
+
+//Gets if has shadow or not
+
+bool hasShadow = CustomNavigationPage.GetHasShadow(this);
+
+//Sets the title text font to Micro
+CustomNavigationPage.SetTitleFont(this, Font.SystemFontOfSize(NamedSize.Micro));
+```
+
 ### Future
 
 - UWP and other platforms support
