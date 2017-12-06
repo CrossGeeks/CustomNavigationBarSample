@@ -1,6 +1,8 @@
 # CustomNavigationBarSample
+
 Navigation Bar Customization in Xamarin Forms
 
+Blog post: http://www.xamboy.com/2017/12/06/navigation-bar-customization-in-xamarin-forms/
 
 <p align="center">
 <img width="300" height:"700" src="https://github.com/CrossGeeks/CustomNavigationBarSample/blob/master/gifs/android/android_full_video.gif" title="Android"/>
