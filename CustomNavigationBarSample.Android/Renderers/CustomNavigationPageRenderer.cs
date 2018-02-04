@@ -23,6 +23,7 @@ using static Xamarin.Forms.Platform.Android.FontExtensions;
 using Android.Util;
 using Java.Lang;
 using Android.Text.Style;
+using Android.Support.V7.Widget;
 
 [assembly: ExportRenderer(typeof(CustomNavigationPage), typeof(CustomNavigationPageRenderer))]
 namespace CustomNavigationBarSample.Droid.Renderers
@@ -31,8 +32,8 @@ namespace CustomNavigationBarSample.Droid.Renderers
     {
         Android.Support.V7.Widget.Toolbar _toolbar;
         LinearLayout _titleViewLayout;
-        TextView _titleTextView;
-        TextView _subTitleTextView;
+        AppCompatTextView _titleTextView;
+        AppCompatTextView _subTitleTextView;
         Android.Widget.FrameLayout _parentLayout;
 
         Drawable _originalDrawable;
@@ -41,7 +42,10 @@ namespace CustomNavigationBarSample.Droid.Renderers
         ColorStateList _originalColorStateList;
         Typeface _originalFont;
 
-      
+        public CustomNavigationPageRenderer(Context context) : base(context)
+        {
+
+        }
         
         protected override void OnConfigurationChanged(Configuration newConfig)
         {
@@ -89,7 +93,7 @@ namespace CustomNavigationBarSample.Droid.Renderers
             var lastPage = sender as Page;
             if (e.PropertyName == CustomNavigationPage.HasShadowProperty.PropertyName)
             {
-               UpdateToolbarShadow(_toolbar, CustomNavigationPage.GetHasShadow(lastPage),Forms.Context as Activity,_originalWindowContent);
+               UpdateToolbarShadow(_toolbar, CustomNavigationPage.GetHasShadow(lastPage),Context as Activity,_originalWindowContent);
             }
             else if (e.PropertyName == CustomNavigationPage.TitleBackgroundProperty.PropertyName)
             {
@@ -98,22 +102,22 @@ namespace CustomNavigationBarSample.Droid.Renderers
             }
             else if (e.PropertyName == CustomNavigationPage.BarBackgroundProperty.PropertyName)
             {
-                UpdateToolbarBackground(_toolbar, lastPage, Forms.Context as Activity, _originalToolbarBackground);
+                UpdateToolbarBackground(_toolbar, lastPage, Context as Activity, _originalToolbarBackground);
 
             }
             else if (e.PropertyName == CustomNavigationPage.GradientColorsProperty.PropertyName)
             {
-                UpdateToolbarBackground(_toolbar, lastPage, Forms.Context as Activity, _originalToolbarBackground);
+                UpdateToolbarBackground(_toolbar, lastPage, Context as Activity, _originalToolbarBackground);
 
             }
             else if (e.PropertyName == CustomNavigationPage.GradientDirectionProperty.PropertyName)
             {
-                UpdateToolbarBackground(_toolbar, lastPage, Forms.Context as Activity, _originalToolbarBackground);
+                UpdateToolbarBackground(_toolbar, lastPage, Context as Activity, _originalToolbarBackground);
 
             }
             else if (e.PropertyName == CustomNavigationPage.BarBackgroundOpacityProperty.PropertyName)
             {
-                UpdateToolbarBackground(_toolbar, lastPage, Forms.Context as Activity, _originalToolbarBackground);
+                UpdateToolbarBackground(_toolbar, lastPage, Context as Activity, _originalToolbarBackground);
 
             }
             else if (e.PropertyName == CustomNavigationPage.TitleBorderCornerRadiusProperty.PropertyName)
@@ -250,7 +254,7 @@ namespace CustomNavigationBarSample.Droid.Renderers
                 _toolbar = (Android.Support.V7.Widget.Toolbar)child;
                 _originalToolbarBackground = _toolbar.Background;
 
-                var originalContent = (Forms.Context as Activity)?.Window?.DecorView?.FindViewById<FrameLayout>(Window.IdAndroidContent);
+                var originalContent = (Context as Activity)?.Window?.DecorView?.FindViewById<FrameLayout>(Window.IdAndroidContent);
                 if (originalContent != null)
                 {
                     _originalWindowContent =originalContent.Foreground;
@@ -269,13 +273,13 @@ namespace CustomNavigationBarSample.Droid.Renderers
                 };
  
                 //Create custom title text view
-                _titleTextView = new TextView(_parentLayout.Context)
+                _titleTextView = new AppCompatTextView(_parentLayout.Context)
                 {
                     LayoutParameters = new LinearLayout.LayoutParams(LayoutParams.WrapContent, LayoutParams.WrapContent)
                 };
               
                 //Create custom subtitle text view
-                _subTitleTextView = new TextView(_parentLayout.Context)
+                _subTitleTextView = new AppCompatTextView(_parentLayout.Context)
                 {
                     LayoutParameters = new LinearLayout.LayoutParams(LayoutParams.WrapContent, LayoutParams.WrapContent)    
                 };
@@ -310,7 +314,7 @@ namespace CustomNavigationBarSample.Droid.Renderers
 
                 UpdateToolbarTitle(lastPage, _titleTextView,_subTitleTextView, _originalFont, _originalColorStateList);
 
-                UpdateToolbarStyle(_toolbar, lastPage, Forms.Context as Activity,_originalToolbarBackground, _originalWindowContent);
+                UpdateToolbarStyle(_toolbar, lastPage, Context as Activity,_originalToolbarBackground, _originalWindowContent);
 
             }
         }
@@ -318,7 +322,7 @@ namespace CustomNavigationBarSample.Droid.Renderers
 
         
         #region Title View Layout
-        void UpdateTitleViewLayout(Page lastPage, Android.Widget.LinearLayout titleViewLayout, Android.Widget.TextView titleTextView, Android.Widget.TextView subTitleTextView, Android.Graphics.Drawables.Drawable defaultBackground)
+        void UpdateTitleViewLayout(Page lastPage, Android.Widget.LinearLayout titleViewLayout, AppCompatTextView titleTextView, AppCompatTextView subTitleTextView, Android.Graphics.Drawables.Drawable defaultBackground)
         {
 
                 UpdateTitleViewLayoutAlignment(titleViewLayout, titleTextView, subTitleTextView, CustomNavigationPage.GetTitlePosition(lastPage));
@@ -340,7 +344,7 @@ namespace CustomNavigationBarSample.Droid.Renderers
 
         }
 
-            void UpdateTitleViewLayoutAlignment(LinearLayout titleViewLayout, Android.Widget.TextView titleTextView, Android.Widget.TextView subTitleTextView, CustomNavigationPage.TitleAlignment alignment)
+            void UpdateTitleViewLayoutAlignment(LinearLayout titleViewLayout, AppCompatTextView titleTextView, AppCompatTextView subTitleTextView, CustomNavigationPage.TitleAlignment alignment)
             {
                 var titleViewParams = titleViewLayout.LayoutParameters as Android.Widget.FrameLayout.LayoutParams;
                 var titleTextViewParams = titleTextView.LayoutParameters as LinearLayout.LayoutParams;
@@ -442,14 +446,7 @@ namespace CustomNavigationBarSample.Droid.Renderers
 
                         GradientDrawable gradient = new GradientDrawable(direction, new int[] { colors.Item1.ToAndroid().ToArgb(), colors.Item2.ToAndroid().ToArgb() });
                         gradient.SetCornerRadius(0f);
-                        if (Android.OS.Build.VERSION.SdkInt >= Android.OS.BuildVersionCodes.JellyBean)
-                        {
-                            toolbar.SetBackground(gradient);
-                        }
-                        else
-                        {
-                            toolbar.SetBackgroundDrawable(gradient);
-                        }
+                        toolbar.SetBackground(gradient);
 
 
                     }
@@ -486,7 +483,7 @@ namespace CustomNavigationBarSample.Droid.Renderers
             }
         #endregion
         #region Title TextView
-        void UpdateToolbarTitle(Page lastPage, Android.Widget.TextView titleTextView, Android.Widget.TextView subTitleTextView, Typeface originalFont, ColorStateList defaultColorStateList)
+        void UpdateToolbarTitle(Page lastPage, AppCompatTextView titleTextView, AppCompatTextView subTitleTextView, Typeface originalFont, ColorStateList defaultColorStateList)
         {
             //Check support for CustomPage 
             if (lastPage is CustomPage)
@@ -517,7 +514,7 @@ namespace CustomNavigationBarSample.Droid.Renderers
             UpdateToolbarTextFont(titleTextView, CustomNavigationPage.GetTitleFont(lastPage), originalFont);
 
         }
-        void UpdateFormattedTitleText(Android.Widget.TextView titleTextView, FormattedString formattedString, string defaulTitle)
+        void UpdateFormattedTitleText(AppCompatTextView titleTextView, FormattedString formattedString, string defaulTitle)
         {
             if (formattedString != null && formattedString.Spans.Count > 0)
             {
@@ -530,7 +527,7 @@ namespace CustomNavigationBarSample.Droid.Renderers
             }
 
         }
-        void UpdateTitleText(Android.Widget.TextView titleTextView, string text)
+        void UpdateTitleText(AppCompatTextView titleTextView, string text)
         {
             if (!string.IsNullOrEmpty(text))
             {
@@ -545,7 +542,7 @@ namespace CustomNavigationBarSample.Droid.Renderers
 
         #endregion
         #region Subtitle TextView
-        void UpdateToolbarSubtitle(CustomPage cPage, Android.Widget.TextView subTitleTextView, Typeface originalFont, ColorStateList defaultColorStateList)
+        void UpdateToolbarSubtitle(CustomPage cPage, AppCompatTextView subTitleTextView, Typeface originalFont, ColorStateList defaultColorStateList)
             {
                 ClearTextView(subTitleTextView, true);
 
@@ -566,7 +563,7 @@ namespace CustomNavigationBarSample.Droid.Renderers
             }
         #endregion
         #region General TextView
-        void UpdateToolbarTextColor(Android.Widget.TextView textView, Xamarin.Forms.Color? titleColor, ColorStateList defaultColorStateList)
+        void UpdateToolbarTextColor(AppCompatTextView textView, Xamarin.Forms.Color? titleColor, ColorStateList defaultColorStateList)
             {
                 if (titleColor != null)
                 {
@@ -577,7 +574,7 @@ namespace CustomNavigationBarSample.Droid.Renderers
                     textView.SetTextColor(defaultColorStateList);
                 }
             }
-            void UpdateToolbarTextFont(Android.Widget.TextView textView, Font customFont, Typeface originalFont)
+            void UpdateToolbarTextFont(AppCompatTextView textView, Font customFont, Typeface originalFont)
             {
                 if (customFont != null)
                 {
@@ -633,18 +630,18 @@ namespace CustomNavigationBarSample.Droid.Renderers
         {
             var view = e.Child.GetType();
      
-            if (e.Child.GetType() == typeof(Android.Widget.TextView))
+           if (e.Child.GetType() == typeof(AppCompatTextView))
             {
-               
-                var textView = (Android.Widget.TextView)e.Child;
+
+                var textView = (AppCompatTextView)e.Child;
                 textView.Visibility = ViewStates.Gone;
                 _originalDrawable = textView.Background;
                 _originalFont = textView.Typeface;
                 _originalColorStateList = textView.TextColors;
-                
-                    var lastPage = Element?.Navigation?.NavigationStack?.Last();
-                    SetupToolbarCustomization(lastPage);
-                  
+
+                var lastPage = Element?.Navigation?.NavigationStack?.Last();
+                SetupToolbarCustomization(lastPage);
+
 
 
             }
