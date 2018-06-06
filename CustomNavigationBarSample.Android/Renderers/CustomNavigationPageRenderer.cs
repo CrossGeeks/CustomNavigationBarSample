@@ -301,7 +301,7 @@ namespace CustomNavigationBarSample.Droid.Renderers
 
                 lastPage.PropertyChanged += LastPage_PropertyChanged;
 
-
+                SetupToolbarCustomization(lastPage);
             }
         }
 
